@@ -7,27 +7,6 @@
 #include <sstream>
 #include <vector>
 
-void showStringVector(std::vector<std::string>& sList) {
-	if (sList.size() > 1) {
-		for (size_t i = 0; i < sList.size(); i++) {
-			std::cout << sList[i] << std::endl;
-		}
-		//std::cout << std::endl;
-	}
-}
-
-std::vector<std::string> parseStringVector(std::stringstream& steam) {
-	std::string pstring;
-	std::vector<std::string> pvector;
- 
-	while (steam.good()) {
-		std::getline(steam, pstring, ',');
-		pvector.push_back(pstring);
-	}
-
-	return pvector;
-}
-
 int main()
 {
 	std::string name;
@@ -56,13 +35,23 @@ int main()
 	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void showStringVector(std::vector<std::string>& sList) {
+	if (sList.size() > 1) {
+		for (size_t i = 0; i < sList.size(); i++) {
+			std::cout << sList[i] << std::endl;
+		}
+		//std::cout << std::endl;
+	}
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+std::vector<std::string> parseStringVector(std::stringstream& steam) {
+	std::string pstring;
+	std::vector<std::string> pvector;
+
+	while (steam.good()) {
+		std::getline(steam, pstring, ',');
+		pvector.push_back(pstring);
+	}
+
+	return pvector;
+}

@@ -4,3 +4,4 @@
 #include <string>
 
 void showStringVector(std::vector<std::string>&);
+std::vector<std::string> parseStringVector(std::stringstream&);
