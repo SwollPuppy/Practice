@@ -10,10 +10,22 @@
 void showStringVector(std::vector<std::string>& sList) {
 	if (sList.size() > 1) {
 		for (size_t i = 0; i < sList.size(); i++) {
-			std::cout << sList[i] << "  ";
+			std::cout << sList[i] << std::endl;
 		}
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	}
+}
+
+std::vector<std::string> parseStringVector(std::stringstream& steam) {
+	std::string pstring;
+	std::vector<std::string> pvector;
+ 
+	while (steam.good()) {
+		std::getline(steam, pstring, ',');
+		pvector.push_back(pstring);
+	}
+
+	return pvector;
 }
 
 int main()
@@ -30,36 +42,16 @@ int main()
 	std::cin >> name;
 	std::cout << "Hello " << name << std::endl;
 
-	while (ss.good())
-	{
-		std::string substr;
-		std::getline(ss, substr, ',');
-		result.push_back(substr);
-	}
-
+	result = parseStringVector(ss);
 	showStringVector(result);
 
 	std::cout << "Now you give me a string." << std::endl;
 	std::cin >> myList;
 	std::stringstream st(myList);
 
-	while (st.good())
-	{
-		std::string substr;
-		std::getline(st, substr, ',');
-		meList.push_back(substr);
-	}
 
+	meList = parseStringVector(st);
 	showStringVector(meList);
-
-	//void showStringVector(std::vector<std::string>& sList) {
-	//	if (sList.size() > 1) {
-	//		for (size_t i = 0; i < sList.size(), i++) {
-	//			std::cout << sList[i] << "  ";
-	//		}
-	//		std::cout << std::endl;
-	//	}
-	//}
 
 	return 0;
 }
